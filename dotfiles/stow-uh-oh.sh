@@ -1,6 +1,7 @@
 #!/bin/zsh
 
-. $HOME/common-setups/dotfiles/stow-config.sh
+DOTFILES_DIR=${0:A:h}
+. $DOTFILES_DIR/common-setups/dotfiles/stow-config.sh
 
 for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
 do

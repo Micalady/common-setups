@@ -4,7 +4,8 @@
 # are on the path. This is useful in the case of removed items no longer being
 # owned by stow, and not available on path anymore.
 
-. $HOME/common-setups/dotfiles/stow-config.sh
+DOTFILES_DIR=${0:A:h}
+. $DOTFILES_DIR/common-setups/dotfiles/stow-config.sh
 
 for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
 do
