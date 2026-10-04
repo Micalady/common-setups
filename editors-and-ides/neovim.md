@@ -65,7 +65,10 @@ Run `:TSUpdate` every now and then if tree sitter is giving you issues.
 If on Debian, or a Debian based distro you can use `sudo apt-get install neovim`, but the repo does not have latest stable. 
 
 ```sh
-# Useful for yanking to system clipboard
+# Primary clipboard driver on Wayland. nvim prefers wl-copy when $WAYLAND_DISPLAY is set,
+# avoiding the X11 <-> Wayland clipboard sync (stale pastes in Wayland-native terminals)
+sudo apt install wl-clipboard
+# Useful for yanking to system clipboard (X11, or fallback under XWayland)
 sudo apt-get install xsel
 # sudo apt-get install yank # ??
 ```
