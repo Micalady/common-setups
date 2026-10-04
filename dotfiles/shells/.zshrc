@@ -142,8 +142,17 @@ alias old-history="cat ~/.zsh_backup_history"
 # alias nvim="~/nvim.appimage" # Not needed if downloaded binary and placed in ~/bin
 alias emacs='emacs -nw'
 alias minisign="~/Toolkits/minisign/minisign"
-alias copy="xclip -sel clipboard"
-# alias copy="xsel -ib"
+# Prefer the native Wayland clipboard when in a Wayland session, else fall
+# through to X11 tools (avoids stale X11 <-> Wayland clipboard sync)
+if [[ -n $WAYLAND_DISPLAY ]] && (( $+commands[wl-copy] )); then
+  alias copy="wl-copy"
+elif (( $+commands[xclip] )); then
+  alias copy="xclip -sel clipboard"
+elif (( $+commands[xsel] )); then
+  alias copy="xsel -ib"
+else
+  alias copy='echo "copy: no valid clipboard tool found (wl-copy, xclip, xsel)" >&2'
+fi
 alias bw="flatpak run --command=bw com.bitwarden.desktop"
 alias bw-desk="flatpak run --verbose com.bitwarden.desktop --enable-logging=file --log-file=~/tmp/bitwarden.log"
 alias common-setups="cd ~/common-setups"

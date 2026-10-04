@@ -2,6 +2,35 @@
 
 This will be a dump of fun packages & tools to install and maybe play around with.
 
+### Idea: Move to NixOS
+
+Keeping this file in sync with what's actually installed is manual upkeep that
+keeps falling behind. NixOS does this natively: packages and config are declared
+in files, so the declaration *is* the record of what's installed.
+
+Test drive before hopping: install Nix + [home-manager](https://github.com/nix-community/home-manager)
+on the current distro. It manages user-level packages and dotfiles declaratively
+without touching the system packages.
+
+```sh
+# Install Nix (multi-user, from https://nixos.org/download)
+sh <(curl -L https://nixos.org/nix/install) --daemon
+# Then follow the home-manager standalone install for your nixpkgs channel:
+# https://nix-community.github.io/home-manager/#sec-install-standalone
+```
+
+Then declare tools in `~/.config/home-manager/home.nix`, e.g.:
+
+```nix
+home.packages = with pkgs; [ wl-clipboard xclip xsel ripgrep fd fzf ];
+```
+
+and apply with `home-manager switch`. If the declarative workflow sticks, most
+of `home.nix` carries straight over to a NixOS install.
+
+Full migration notes (hardware, drivers, printers, desktops, local builds, how
+each current program maps over): `ZZ.OTHER-OSs/nixos/README.md`.
+
 ## Temperature
 
 * `sudo apt-get install lm-sensors`
@@ -245,6 +274,13 @@ Just a shell
 ## xsel
 
 `sudo apt-get install xsel`
+
+## wl-clipboard
+
+Native Wayland clipboard (`wl-copy` / `wl-paste`). Preferred over `xclip`/`xsel`
+in a Wayland session; nvim and the `copy` alias in `.zshrc` use it when present.
+
+`sudo apt install wl-clipboard`
 
 ## Deno
 
