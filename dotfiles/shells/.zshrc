@@ -1,5 +1,5 @@
 # Add deno completions to search path
-if [[ ":$FPATH:" != *":/home/cragady/.zsh/completions:"* ]]; then export FPATH="/home/cragady/.zsh/completions:$FPATH"; fi
+if [[ ":$FPATH:" != *":$HOME/.zsh/completions:"* ]]; then export FPATH="$HOME/.zsh/completions:$FPATH"; fi
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -158,7 +158,7 @@ alias bw-desk="flatpak run --verbose com.bitwarden.desktop --enable-logging=file
 alias common-setups="cd ~/common-setups"
 alias common-setups-nvim="cd ~/common-setups/dotfiles/nvim/.config/nvim"
 alias ip="ip -c=always"
-export NVM_DIR="/home/cragady/.nvm"
+export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -174,22 +174,22 @@ export PATH=$PATH:~/zig/0.14.0
 export PATH=$PATH:~/.local/scripts
 
 # opam configuration
-[[ ! -r /home/cragady/.opam/opam-init/init.zsh ]] || source /home/cragady/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+[[ ! -r "$HOME/.opam/opam-init/init.zsh" ]] || source "$HOME/.opam/opam-init/init.zsh"  > /dev/null 2> /dev/null
 
-[ -f "/home/cragady/.ghcup/env" ] && . "/home/cragady/.ghcup/env" # ghcup-env
-. "/home/cragady/.deno/env"
+[ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env" # ghcup-env
+. "$HOME/.deno/env"
 
 function conda_setup_init {
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/cragady/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$("$HOME/miniforge3/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
   if [ $? -eq 0 ]; then
       eval "$__conda_setup"
   else
-      if [ -f "/home/cragady/miniforge3/etc/profile.d/conda.sh" ]; then
-          . "/home/cragady/miniforge3/etc/profile.d/conda.sh"
+      if [ -f "$HOME/miniforge3/etc/profile.d/conda.sh" ]; then
+          . "$HOME/miniforge3/etc/profile.d/conda.sh"
       else
-          export PATH="/home/cragady/miniforge3/bin:$PATH"
+          export PATH="$HOME/miniforge3/bin:$PATH"
       fi
   fi
   unset __conda_setup
@@ -198,8 +198,8 @@ __conda_setup="$('/home/cragady/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev
 
   # >>> mamba initialize >>>
   # !! Contents within this block are managed by 'mamba shell init' !!
-  export MAMBA_EXE='/home/cragady/miniforge3/bin/mamba';
-  export MAMBA_ROOT_PREFIX='/home/cragady/miniforge3';
+  export MAMBA_EXE="$HOME/miniforge3/bin/mamba";
+  export MAMBA_ROOT_PREFIX="$HOME/miniforge3";
   __mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
   if [ $? -eq 0 ]; then
     eval "$__mamba_setup"

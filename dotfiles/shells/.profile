@@ -26,8 +26,8 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-export MGFXC_WINE_PATH=/home/cragady/.winemonogame
+export MGFXC_WINE_PATH="$HOME/.winemonogame"
 . "$HOME/.cargo/env"
 
-[ -f "/home/cragady/.ghcup/env" ] && . "/home/cragady/.ghcup/env" # ghcup-env
-. "/home/cragady/.deno/env"
+[ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env" # ghcup-env
+. "$HOME/.deno/env"

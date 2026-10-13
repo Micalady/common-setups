@@ -25,7 +25,7 @@ function os.capture(cmd, raw)
 end
 
 local global_json = '/global.json'
--- /home/cragady/.local/share/nvim/lazy
+-- ~/.local/share/nvim/lazy
 local data_dir = vim.fn.stdpath('data')
 local omnisharp_wd = data_dir .. '/lazy/omnisharp-roslyn'
 local target_file = omnisharp_wd .. global_json

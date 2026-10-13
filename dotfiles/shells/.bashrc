@@ -136,7 +136,7 @@ export NVM_DIR="$HOME/.nvm"
 # End UsrAdd
 source ~/.config/z-my-envs/.env-ips.env
 alias DreamCragLoc="$Dream_Crag_Loc_IP" # Was DO?
-alias jafl_ubu="echo \"connect with: ssh -i '/home/cragady/.ssh/other_keys/jafl_ubu.pem' $jafl_ubu_IP\"" # Was ec2?
+alias jafl_ubu="echo \"connect with: ssh -i '$HOME/.ssh/other_keys/jafl_ubu.pem' $jafl_ubu_IP\"" # Was ec2?
 alias ClearopsVPN='sudo openvpn --config ~/.config/OpenVPN/ClearopsServer/files/client1.ovpn'
 alias RoutunVPN='sudo openvpn --config ~/.config/OpenVPN/routun-clrps/files/cragady-rtn.ovpn'
 source ~/.config/z-my-envs/.reset-env.env
@@ -145,5 +145,5 @@ source ~/.config/z-my-envs/.reset-env.env
 alias h2='$(npm prefix -s)/node_modules/.bin/shopify hydrogen'
 
 . "$HOME/.cargo/env"
-. "/home/cragady/.deno/env"
-source /home/cragady/.local/share/bash-completion/completions/deno.bash
+. "$HOME/.deno/env"
+source "$HOME/.local/share/bash-completion/completions/deno.bash"
